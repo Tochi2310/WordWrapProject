@@ -1,0 +1,53 @@
+package wordwrapproject;
+import java.util.Scanner;
+
+public class wordwrapproject {
+	public static void main(String args[]) {
+		  
+		System.out.println("Enter text:\n");
+	      int maxWidth = 5;
+	      Scanner scnr = new Scanner(System.in);
+	      String userInput;
+	      userInput = scnr.nextLine();
+	      StringBuffer   Buffer=new StringBuffer(userInput);
+	      String buffer = "";
+	      
+	      while(scnr.hasNextLine()){
+	      userInput = scnr.nextLine();
+	      if(userInput.length()==0){
+	          System.out.println(Buffer);
+	          System.out.println();
+	          buffer="";
+	          continue;
+	        }
+	       
+	        if(userInput.equals("Stop."))
+	          break;
+	        Scanner userInputscnr = new Scanner(userInput);
+	        while(userInputscnr.hasNext()){
+	          String str = userInputscnr.next();
+	         int wordLength=Buffer.length()+str.length();
+	         if(Buffer.length()!=0){
+	        	 wordLength++;
+	          }
+	        if(wordLength<=maxWidth){
+	            if(Buffer.length()!=0){
+	              buffer+=" ";
+	            }
+	           buffer+=str;
+	          }else{
+	           System.out.println(Buffer);
+	            if(str.length()>maxWidth){
+	              System.out.println(str);
+	              buffer = "";
+	            }else{
+	            buffer=str;
+	            System.out.println(Buffer);
+	            }
+	          }
+	        } 
+	      }
+	     
+	      
+	  }
+	}
